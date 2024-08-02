@@ -61,4 +61,9 @@ Here are common Git terms explained in simple language:
 
 - **Conflict**: When changes from different branches clash, and Git can't automatically merge them. You'll need to resolve these conflicts manually.
 
-This list covers many of the essential Git terms you might encounter while working with version control.
+### Stash
+
+**Stash**: Temporarily saving changes that are not ready to be committed. It's like putting your work on hold so you can switch to something else without committing incomplete work.
+
+**Use Case**:
+You're working on a feature but suddenly need to fix a bug on a different branch. You stash your current work, switch to the other branch to fix the bug, and then come back and reapply your stashed changes to continue where you left off.
