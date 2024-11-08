@@ -1,139 +1,111 @@
-# Configuring user information
+# **GitHub Push Cheatsheet**
 
-#### `git config --global user.name "Your Name"`:-> *Sets the name you want attached to your commit transactions*
+## **Index (Table of Contents)**
 
-#### `git config --global user.email "your.email@example.com"`:-> *Sets the email you want attached to your commit transactions*
+1. [Push a Directory/File for the First Time](#1-push-a-directoryfile-for-the-first-time)
+2. [Update for Later Changes](#2-update-for-later-changes)
+3. [Open Source Contribution](#3-open-source-contribution) (To be filled later)
 
-# Basic Git Commands
+---
 
-#### `git init`:-> *Initializes a new Git repository*
+## **1. Push a Directory/File for the First Time**
 
-#### `git clone <repository>`:-> *Clones a repository into a new directory*
+To push a directory or files to GitHub for the first time, follow these steps:
 
-# Making Changes
+### **Step 1:** Initialize Git Repository
 
-#### `git status`:-> *Shows the working directory status*
+```bash
+git init
+```
 
-#### `git add <file>`:-> *Adds a file to the staging area*
+### **Step 2:** Add Files or Directories
 
-#### `git add .`:-> *Adds all files in the current directory to the staging area*
+To add all files:
 
-#### `git commit -m "Commit message"`:-> *Records changes to the repository with a message*
+```bash
+git add .
+```
 
-# Viewing History
+To add a specific file:
 
-#### `git log`:-> *Shows commit logs*
+```bash
+git add <file_name>
+```
 
-#### `git log --oneline`:-> *Shows commit logs in a simplified form*
+### **Step 3:** Commit Changes
 
-# Branching
+```bash
+git commit -m "Your commit message"
+```
 
-#### `git branch`:-> *Lists all local branches*
+(Here, `-m` Stands for "message", and is used to provide a commit message.)
 
-#### `git branch <branch-name>`:-> *Creates a new branch*
+### **Step 4:** Set Remote Repository
 
-#### `git checkout <branch-name>`:-> *Switches to the specified branch*
+```bash
+git remote add origin <repository_URL>
+```
 
-#### `git checkout -b <branch-name>`:-> *Creates and switches to a new branch*
+Replace `<repository_URL>` with your GitHub repository URL.
 
-#### `git merge <branch-name>`:-> *Merges the specified branch into the current branch*
+```bash
+git remote add origin https://github.com/username/repository-name.git
+```
 
-# Remote Repositories
+### **Step 5:** Push to GitHub
 
-#### `git remote add <name> <url>`:-> *Adds a remote repository*
+```bash
+git push -u origin main
+```
 
-#### `git remote -v`:-> *Lists all configured remote repositories*
+( Here, `-u` Stands for "upstream". This sets the remote repository (origin) and branch (main) as the default for future push and pull commands.)
 
-#### `git fetch <remote>`:-> *Fetches changes from the remote repository*
+---
 
-#### `git pull <remote> <branch>`:-> *Fetches and merges changes from the remote branch*
+## **2. Update for Later Changes**
 
-#### `git push <remote> <branch>`:-> *Pushes changes to the remote branch*
+### **Step 1:** Add Changes
 
-# Undoing Changes
+```bash
+git add .
+```
 
-#### `git reset <file>`:-> *Unstages a file*
+### **Step 2:** Commit Changes
 
-#### `git reset --hard`:-> *Resets the working directory to the last commit*
+```bash
+git commit -m "Updated message"
+```
 
-#### `git reset --hard <commit>`:-> *Resets the working directory and index to the specified commit*
+### **Step 3:** Push Changes
 
-#### `git revert <commit>`:-> *Creates a new commit that undoes the changes from a previous commit*
+```bash
+git push origin main
+```
 
-# Stashing
+### **Step 4 (Optional):** If Errors
 
-#### `git stash`:-> *Stashes changes in a dirty working directory*
+- If the remote repository has changes, you might need to pull them before pushing:
 
-#### `git stash list`:-> *Lists all stashes*
+  ```bash
+  git pull origin main --allow-unrelated-histories
+  ```
 
-#### `git stash apply`:-> *Applies the latest stash*
+- Force Push (`Optional`, **USE WIth CAUTION 💀**):
 
-#### `git stash apply stash@{n}`:-> *Applies the nth stash*
+  If you want to overwrite remote changes with your local changes (force push):
 
-#### `git stash drop`:-> *Deletes the latest stash*
+  ```bash
+  git push -f origin main
+  ```
 
-#### `git stash drop stash@{n}`:-> *Deletes the nth stash*
+  *(resolve any conflicts, commit, and push again.)*
 
-# Tagging
+---
 
-#### `git tag`:-> *Lists tags*
+## **3. Open Source Contribution**
 
-#### `git tag <tag-name>`:-> *Creates a new tag*
+(To be filled later)
 
-#### `git tag -a <tag-name> -m "Tag message"`:-> *Creates an annotated tag with a message*
+---
 
-#### `git push <remote> <tag-name>`:-> *Pushes a tag to the remote repository*
-
-# Viewing Differences
-
-#### `git diff`:-> *Shows changes between working directory and index*
-
-#### `git diff <commit>`:-> *Shows changes between working directory and specified commit*
-
-#### `git diff <commit1> <commit2>`:-> *Shows changes between two commits*
-
-# Rebase
-
-#### `git rebase <branch>`:-> *Reapplies commits on top of another base tip*
-
-#### `git rebase --continue`:-> *Continues rebase after resolving conflicts*
-
-#### `git rebase --abort`:-> *Aborts the rebase and returns to the original branch*
-
-# Cleaning
-
-#### `git clean -f`:-> *Removes untracked files from the working directory*
-
-#### `git clean -fd`:-> *Removes untracked files and directories*
-
-# Working with Submodules
-
-#### `git submodule add <repository> <path>`:-> *Adds a new submodule*
-
-#### `git submodule update`:-> *Initializes, fetches, and checks out the submodule*
-
-#### `git submodule init`:-> *Initializes the submodule*
-
-#### `git submodule deinit <path>`:-> *Deinitializes the submodule*
-
-# Gitignore
-
-#### `echo "pattern" >> .gitignore`:-> *Adds a pattern to the .gitignore file*
-
-#### `git rm -r --cached .`:-> *Removes all files from the index and stages them for a commit*
-
-# Useful Aliases
-
-#### `git config --global alias.st "status"`:-> *Creates a shortcut for 'status'*
-
-#### `git config --global alias.co "checkout"`:-> *Creates a shortcut for 'checkout'*
-
-#### `git config --global alias.br "branch"`:-> *Creates a shortcut for 'branch'*
-
-#### `git config --global alias.ci "commit"`:-> *Creates a shortcut for 'commit'*
-
-# Git Help
-
-#### `git help <command>`:-> *Shows help for a specific Git command*
-
-# For more detailed information, refer to the official Git documentation at https://git-scm.com/doc
+This structure now includes a table of contents with links to each section. You can fill in section 3 with details when needed. Let me know if you need any modifications!
